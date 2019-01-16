@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+		     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+				<style>
+
+					 body{ padding-top:50px;
+					 
+					 			background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(11).jpg");
+
+					 /* Full height */
+					 height: 100%; 
+
+					 /* Center and scale the image nicely */
+					 background-position: center;
+					 background-repeat: no-repeat;
+					 background-size: cover;
+					 }
+				.login-sec h2{margin-bottom:30px; font-weight:800; font-size:30px; color: #DE6262;}
+				.login-sec h2:after{content:" "; width:100px; height:5px; background:#FEB58A; display:block; margin-top:20px; border-radius:3px; margin-left:auto;margin-right:auto}
+				.btn-login{background: #DE6262; color:#fff; font-weight:600;}
+				.img-thumbnail{margin-top:50%;}
+				.client{background-color:#173B0B;}
+					 
+				</style>
+		     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        {% endblock %}
+        
+    </head>
+    <body>
+    	{% block header %}
+    	<nav class="navbar navbar-inverse" >
+		    <div class="container-fluid">
+		        <div class="navbar-header">
+		            <a class="navbar-brand" href="#">
+		                <span class="glyphicon glyphicon-tree-deciduous"></span>
+		                KENOUSEARCH
+		            </a>
+		        </div>
+		        <ul class="nav navbar-nav">
+		            <li><a href="{{url('/bienvenue')}}">HOME</a></li>
+		            <li class="dropdown">
+			        	<a class="dropdown-toggle" data-toggle="dropdown" href="{{url('/annonce')}}">ANNONCE<span class="caret"></span></a>
+		                <ul class="dropdown-menu">
+		                    <li><a href="{{url('/annonce/deposer')}}">Déposer une annonce</a></li>
+		                    <li><a href="{{url('/annonce/voir')}}">Voir les annonces</a></li>
+		                    <li><a href="{{url('/annonce/mesAnnonces')}}">Mes annonces</a></li>
+		                </ul>
+		            </li>
+		            <li class="dropdown">
+		            	<a class="dropdown-toggle" data-toggle="dropdown" href="{{url('/messagerie')}}">MESSAGERIE<span class="caret"></span></a>
+		                <ul class="dropdown-menu">
+		                    <li><a href="{{url('/nouveau')}}">Nouveau Message</a></li>
+		                    <li><a href="{{url('/envoye')}}">Messages Envoyés</a></li>
+		                    <li><a href="{{url('/recu')}}">Messages reçus</a></li>
+		                </ul>
+		            </li>
+		        </ul>
+		        <ul class="nav navbar-nav navbar-right">
+		            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href=""><span class="glyphicon glyphicon-user">
+		             {{array.login}}<span class="caret"></span></a>
+		                <ul class="dropdown-menu">
+		                	<li><a href="{{url('/profil/moi')}}"> Voir mon Profil</a></li>
+		                    <li><a href="{{url('/profil/modifieMdp')}}"> Modifier Mot de passe</a></li>
+		                    <li><a href="{{url('/profil/photo')}}"> Ajouter une photo de profil</a></li>
+						    <li><a href="{{url('/profil/completer')}}"> Completer le Profil</a></li>
+						    <li><a href="{{url('/profil/mescom')}}"> Voir mes commentaires</a></li>
+		                    <li><a href="{{url('/deconnexion')}}"><span class="glyphicon glyphicon-log-out"></span>DECONNEXION</a></li>
+		                </ul>
+		            </li>
+		        </ul>
+		    </div>
+		</nav>
+    	{% endblock %}
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+        <footer><p class="text-center text-muted">© Copyright 2018 The Sky is the Limit</p></footer>
+    </body>
+</html>

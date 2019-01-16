@@ -1,0 +1,49 @@
+	{% extends 'base1.html.twig' %}
+	{% block body %}
+		<div class="jumbotron">
+	        <div class="container">
+	            <div class="row">
+	                <div class="col-lg-3">
+	                	
+	                </div>
+	                <div class="col-lg-6">
+	                    {% if array.erreurCon is defined %}
+	                	    <div class="alert alert-danger">
+	                            <strong>Attention!</strong> <b> {{ array.erreurCon }} </b>
+	                        </div>
+	                    {% endif %}
+	                </div>
+	                <div class="col-lg-3">
+	                         
+	                </div>
+	            </div>
+	            <div class="row">
+	                <div class="col-lg-3">
+	                	<ul class="nav flex-column">
+				            <li class="nav-item">
+				              <a class="nav-link active" href="{{url('/nouveau')}}">Nouveau Message</span></a>
+				            </li>
+				            <li class="nav-item">
+				              <a class="nav-link" href="{{url('/recu')}}">Messages Reçus  {% if nbmsgNonlu>0 %}<span class="badge">{{nbmsgNonlu}}{% endif %}</a>
+				            </li>
+				            <li class="nav-item">
+				              <a class="nav-link" href="{{url('/envoye')}}">Messages Envoyés</a>
+				            </li>
+				          </ul> 
+	                </div>
+	                <div class="col-lg-6">
+	                    {% if mesmsg is defined %}
+   							{% for msg in mesmsg %}
+   								<div class="alert alert-warning">
+	                            	<strong>{{msg.objet}}</strong> <b> <a href="{{ path('/messagerie', {'url': msg.id}) }}">{{msg.msg}}</a> </b>
+	                        	</div>	
+   							{% endfor %}
+   						{% endif %}
+	                </div>
+	                <div class="col-lg-3">
+	                         
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	{% endblock%}

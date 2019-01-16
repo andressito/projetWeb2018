@@ -1,0 +1,43 @@
+{% extends 'base1.html.twig' %}
+{% block body %}
+	<div class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2">
+        </div>
+        <div class="col-lg-5">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-5">
+          {% if user.photo is not null %}
+          <h2> Votre photo de profil</h2>
+           <img  src="{{ asset(user.photo) }}"  width="100px" />
+          {% endif %}
+            
+        </div>
+        <div class="col-lg-5 login-sec">
+          {% if form is defined %}
+            <h2 class="text-center"> Ajouter une photo de profil </h2>
+            <div class="form-group">
+              {{form_start(form)}}
+                <div class="form-group">
+                  <label for="description" class="text-uppercase custom-file">photo de profil
+                    {{form_widget(form.photo,{'attr': {'class':'custom-file-inputg'}})}}
+                  </label>
+                </div>
+                {{ form_widget(form.save, {'attr': {'class':'btn btn-login float-right'}}) }}
+              {{form_end(form)}}
+            </div>
+          {% endif %}
+        </div>
+        <div class="col-lg-2">
+
+          
+        </div>
+      </div>
+    </div>
+  </div> 
+   
+{% endblock %}

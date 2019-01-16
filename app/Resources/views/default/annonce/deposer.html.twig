@@ -1,0 +1,64 @@
+{% extends 'base1.html.twig' %}
+
+{% block body %}
+  <div class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3">
+        </div>
+        <div class="col-lg-6">
+          {% if notif is defined %}
+            <div class="alert alert-danger">
+              <strong>Attention!</strong> {{ notif }} </a>
+            </div>
+          {% endif %}
+        </div>
+        <div class="col-lg-3">
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3">
+
+        </div>
+        <div class="col-lg-6 login-sec">
+          <h2 class="text-center"> Déposer une annonce </h2>
+          <div class="form-group">
+            {{form_start(annonce)}}
+              <div class="form-group">
+                <label for="categorie" class="text-uppercase"> catégorie</label>
+                {{form_widget(annonce.categorie,{'attr': {'class':'form-control input-lg'}})}}
+              </div>
+              <div class="form-group">
+                <label for="titre" class="text-uppercase"> titre</label>
+                {{form_widget(annonce.titre,{'attr': {'class':'form-control input-lg'}})}}
+              </div>
+              <div class="form-group">
+                <label for="description" class="text-uppercase"> description </label>
+                {{form_widget(annonce.description,{'attr': {'class':'form-control input-lg'}})}}
+              </div>
+              <div class="form-group">
+                <label for="prix" class="text-uppercase"> prix</label>
+                {{form_widget(annonce.prix,{'attr': {'class':'form-control input-lg'}})}}
+              </div>
+              <div class="form-group">
+                <label for="DateDisponibilite" class="text-uppercase">date disponibilite </label>
+                {{form_widget(annonce.DateDisponibilite,{'attr': {'class':'form-control input-lg'}})}}
+              </div>
+              <div class="form-group">
+                <label for="description" class="text-uppercase custom-file">photo annonce
+                  {{form_widget(annonce.photo1,{'attr': {'class':'custom-file-inputg'}})}}
+                </label>
+              </div>
+              
+              {{ form_widget(annonce.save, {'attr': {'class':'btn btn-login float-right'}}) }}
+            {{form_end(annonce)}}
+          </div>
+        </div>
+        <div class="col-lg-3">
+
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

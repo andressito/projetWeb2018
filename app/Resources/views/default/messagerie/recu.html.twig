@@ -1,0 +1,57 @@
+	{% extends 'base1.html.twig' %}
+	{% block body %}
+	<div class="jumbotron">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3">
+				</div>
+				<div class="col-lg-6">
+				</div>
+				<div class="col-lg-3">
+
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-3">
+					<ul class="nav flex-column">
+						<li class="nav-item">
+							<a class="nav-link active" href="{{url('/nouveau')}}">Nouveau Message</span></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{{url('/recu')}}">Messages Reçus  {% if nbmsgNonlu>0 %}<span class="badge">{{nbmsgNonlu}}{% endif %}</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="{{url('/envoye')}}">Messages Envoyés</a>
+							</li>
+						</ul> 
+					</div>
+					<div class="col-lg-6">
+						{% if msgNonLu is defined %}
+   							{% for msgNL in msgNonLu %}
+   								<div class="alert alert-success">
+	                            	<strong>{{msgNL.objet}}</strong> <b> <a href="{{ path('/recu', {'url': msgNL.id}) }}">{{msgNL.msg}}</a> </b>
+	                        	</div>	
+   							{% endfor %}
+   						{% endif %}
+						{% if msgLu is defined %}
+   							{% for msgL in msgLu %}
+   								<div class="alert alert-danger">
+	                            	<strong>{{msgL.objet}}</strong> <a href="{{ path('/recu', {'url': msgL.id}) }}">{{msgL.msg}}</a>
+	                        	</div>	
+   							{% endfor %}
+   						{% endif %}
+   						{% if msgDetails is defined %}
+						<div class="alert alert-danger">
+							<strong>Objet: </strong>  {{msgDetails.objet}}  <br>
+							<strong>Message: </strong> {{msgDetails.msg}}  <br>
+							<strong>Envoyé par:</strong> <a href="{{ path('/profil', {'url': userExpediteur}) }}">{{userExpediteur}}
+						</div>	
+						{% endif %}
+					</div>
+					<div class="col-lg-3">
+
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endblock%}

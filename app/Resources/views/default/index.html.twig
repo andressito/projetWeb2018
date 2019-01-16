@@ -1,0 +1,73 @@
+    {% extends 'base.html.twig' %}
+
+    {% block body %}
+    <div class="jumbotron">
+        <div class="container">
+            <h1> Bienvenue sur KENOUSEARCH </h1>
+            <div class="row">
+                <div class="col-lg-3">
+                    
+                </div>
+                <div class="col-lg-6">
+                    {% if array.erreurCon is defined %}
+                    <div class="alert alert-danger">
+                        <strong>Attention!</strong> <b> {{ array.erreurCon }} </b>
+                    </div>
+                    {% endif %}
+                    {% if array.erreurIns is defined %}
+                    <div class="alert alert-danger">
+                        <strong>Attention!</strong> <b> {{ array.erreurIns }} </b>
+                    </div>
+                    {% endif %}
+                    {% if reussiIns is defined %}
+                    <div class="alert alert-danger">
+                        <strong>Attention!</strong> <b> {{ reussiIns }} </b>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="col-lg-3">
+                    
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 login-sec">
+                    <h2 class="text-center">Connexion</h2>
+                    {{form_start(array.connexion)}}
+                    <div class="form-group">
+                        <label for="form[login]" class="text-uppercase" ><b>Login</b></label>
+                        {{ form_widget(array.connexion.login, {'attr': {'class':'form-control input-lg'}}) }}
+                    </div>
+                    <div class="form-group">
+                        <label for="form[password]" class="text-uppercase"><b>Mot de Passe</b></label>
+                        {{ form_widget(array.connexion.password, {'attr': {'class':'form-control input-lg'}}) }}
+                    </div>
+                    {{ form_widget(array.connexion.save, {'attr': {'class':'btn btn-login float-right'}}) }}
+
+                    {{form_end(array.connexion)}}
+                </div>
+                <div class="col-lg-4">
+
+                </div>
+                <div class="col-lg-4 login-sec">
+                    <h2 class="text-center">Inscription</h2>
+                    {{form_start(array.inscription)}}
+                        <div class="form-group">
+                        <label for="form[login]" class="text-uppercase" ><b>Login</b></label>
+                        {{ form_widget(array.inscription.login, {'attr': {'class':'form-control input-lg'}}) }}
+                    </div>
+                    <div class="form-group">
+                        <label for="form[password]" class="text-uppercase"><b>Mot de Passe</b></label>
+                        {{ form_widget(array.inscription.password, {'attr': {'class':'form-control input-lg'}}) }}
+                    </div>
+                    <div class="form-group">
+                        <label for="form[password2]" class="text-uppercase"><b>Mot de Passe</b></label>
+                        {{ form_widget(array.inscription.password2, {'attr': {'class':'form-control input-lg'}}) }}
+                    </div>
+                     {{ form_widget(array.inscription.save, {'attr': {'class':'btn btn-login float-right'}}) }}
+                    {{form_end(array.inscription)}}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base1.html.twig' %}
+{% block body %}
+	<div class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3">
+        </div>
+        <div class="col-lg-6">
+          {% if array.res is defined %}
+            <div class="alert alert-danger">
+              <strong>Attention!</strong> <b> {{array.res}} </b>
+            </div>
+          {% endif %}
+        </div>
+        <div class="col-lg-3">
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3">
+
+        </div>
+        <div class="col-lg-6">
+          {% if noteprofil is defined %}
+            <h2 class="text-center"> Mes Commentaires</h2>
+            {% for comm in noteprofil %}
+              <div class="alert alert-warning">
+                <strong>!</strong> <b> {{comm.commentaire}} </b>
+              </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+        <div class="col-lg-3">
+
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

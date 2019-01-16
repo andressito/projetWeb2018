@@ -1,0 +1,79 @@
+{% extends 'base1.html.twig' %}
+
+{% block body %}
+  <div class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3">
+        </div>
+        <div class="col-lg-6">
+          {% if notif is defined %}
+            <div class="alert alert-danger">
+              <strong>Attention!</strong> {{ notif }} </a>
+            </div>
+          {% endif %}
+          {% if array.ok is defined %}
+            <div class="alert alert-danger">
+              <strong>Attention!</strong> {{ array.ok }} </a>
+            </div>
+          {% endif %}
+        </div>
+        <div class="col-lg-3">
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3">
+
+        </div>
+        <div class="col-lg-6 login-sec">
+          {% if annonce is defined %}
+          <h2 class="text-center"> Modifier une annonce </h2>
+          <div class="form-group">
+            
+              {{form_start(annonce)}}
+                <div class="form-group">
+                  <label for="categorie" class="text-uppercase"> catégorie</label>
+                  {{form_widget(annonce.categorie,{'attr': {'class':'form-control input-lg'}})}}
+                </div>
+                <div class="form-group">
+                  <label for="titre" class="text-uppercase"> titre</label>
+                  {{form_widget(annonce.titre,{'attr': {'class':'form-control input-lg'}})}}
+                </div>
+                <div class="form-group">
+                  <label for="description" class="text-uppercase"> description </label>
+                  {{form_widget(annonce.description,{'attr': {'class':'form-control input-lg'}})}}
+                </div>
+                <div class="form-group">
+                  <label for="prix" class="text-uppercase"> prix</label>
+                  {{form_widget(annonce.prix,{'attr': {'class':'form-control input-lg'}})}}
+                </div>
+                <div class="form-group">
+                  <label for="disponibilite" class="text-uppercase">l'article est t'il toujours disponible</label>
+                  {{form_widget(annonce.disponibilite,{'attr': {'class':'form-check-input'}})}}
+                </div>
+                {{ form_widget(annonce.save, {'attr': {'class':'btn btn-login float-right'}}) }}
+              {{form_end(annonce)}}
+            {% endif %}
+            {% if photo is defined %}
+            <h2 class="text-center"> Ajouter une photo pour l'annonce </h2>
+            <div class="form-group">
+              {{form_start(photo)}}
+                <div class="form-group">
+                  <label for="description" class="text-uppercase custom-file">photo de l'annonce
+                    {{form_widget(photo.photo1,{'attr': {'class':'custom-file-inputg'}})}}
+                  </label>
+                </div>
+                {{ form_widget(photo.save, {'attr': {'class':'btn btn-login float-right'}}) }}
+              {{form_end(photo)}}
+            </div>
+          {% endif %}
+          </div>
+        </div>
+        <div class="col-lg-3">
+
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

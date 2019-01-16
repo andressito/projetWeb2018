@@ -1,0 +1,59 @@
+{% extends 'base1.html.twig' %}
+{% block body %}
+	<div class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3">
+        
+        </div>
+        <div class="col-lg-6">
+          {% if array.vote is defined %}
+          <div class="alert alert-danger">
+            <strong>Info!</strong> <b> {{ array.vote }} </b>
+          </div>
+          {% endif %}
+          {% if array.ok is defined %}
+          <div class="alert alert-danger">
+            <strong>Info!</strong> <b> {{ array.ok }} </b>
+          </div>
+          {% endif %}
+        </div>
+        <div class="col-lg-3">
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 login-sec">
+          <h2 class="text-center">Recherche</h2>
+            {{form_start(form)}}
+              <div class="form-group">
+                <label for="form[login]" class="text-uppercase" ><b>Login</b></label>
+                {{ form_widget(form.recherche, {'attr': {'class':'form-control input-lg'}}) }}
+              </div>
+              <div class="form-group">
+                <label for="form[password]" class="text-uppercase"><b>Mot de Passe</b></label>
+                {{ form_widget(form.categorie, {'attr': {'class':'form-control input-lg'}}) }}
+                </div>
+              {{ form_widget(form.save, {'attr': {'class':'btn btn-login float-right'}}) }}
+            {{form_end(form)}}
+			  </div>
+        <div class="col-lg-6">
+        	{% if result is defined %}
+            	{% if result is empty %}
+            		<h2 class="text-center"> Pas de Résultats </h2>
+            	{% endif %}
+            	{% if result is not empty %}
+              	<h2 class="text-center"> Résultats </h2>
+            	{% endif %}
+              {% for ques in result %}
+                <div class="alert alert-danger">
+                  <strong>{{ ques.titre }}</strong> -
+                   <a href="{{ path('/annonce/voir', {'url': ques.url}) }}">{{ques.url}}</a> Disponible à partir du {{ques.dateDisponibilite|date('d-m-Y')}}
+                </div>
+              {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

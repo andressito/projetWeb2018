@@ -1,0 +1,63 @@
+{% extends 'base1.html.twig' %}
+
+{% block body %}
+	<div class="jumbotron">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3">
+				</div>
+				<div class="col-lg-6">
+				</div>
+				<div class="col-lg-3">
+
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-3">
+					{% if ann is defined %}
+					<p><a class="btn btn-primary btn-lg active" role="button" aria-pressed="true" href="{{ path('/annonce/modifier', {'url': ann.url}) }}">Modifier l'annonce</a></p>
+					<p><a class="btn btn-primary btn-lg active" role="button" aria-pressed="true" href="{{ path('/annonce/photo', {'url': ann.url}) }}">Modifier l'image</a></p>
+					{% endif %}
+				</div>
+				<div class="col-lg-6">
+					{% if annonces is defined %}
+						
+	            <h2 class="text-center"> Liste de mes Annonces </h2>
+	         
+	          
+		          {% for ques in annonces %}
+		           	<div class="alert alert-warning">
+		              <strong>{{ ques.titre }}</strong> -
+		               <a href="{{ path('/annonce/mesAnnonces', {'url': ques.url}) }}">{{ques.url}}</a> Disponible à partir du {{ques.dateDisponibilite|date('d-m-Y')}}
+		            </div>
+							{% endfor %}
+					{% endif %}
+					{% if ann is defined %}
+						{% if ann.photo1 is not null %}
+              <div class="text-center">
+                <img  src="{{ asset(ann.photo1) }}" class="rounded" width="300" height="300" />
+              </div>
+            {% endif %}
+						<h2 class="text-center"> Details de l'annonce </h2>
+						<div class="alert alert-warning">
+              <strong>Titre: </strong> {{ ann.titre }} 
+            </div>
+            <div class="alert alert-warning">
+              <strong>Description: </strong> {{ ann.description }}
+            </div>
+            <div class="alert alert-warning">
+              <strong>Prix: </strong> {{ ann.prix }} 
+            </div>
+            <div class="alert alert-warning">
+              <strong>Date de disponibilité: </strong> {{ann.dateDisponibilite|date('d-m-Y')}} 
+            </div>
+
+					{% endif %}
+				</div>
+				<div class="col-lg-3">
+					
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

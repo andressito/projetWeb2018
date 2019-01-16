@@ -1,0 +1,34 @@
+Fontionnalités réalisées
+
+PROFIL
+	=> inscripton
+	=>authentification
+   =>regarder son profil avec photo
+	=>modifier son mot de passe
+	=> modifier son profil
+	=>ajouter une photo de profil
+	=>modifier la photo de profil
+	=>afficher ses commentaires et sa note
+
+ANNONCE
+	=>creation annonce avec photo obligatoire
+	=>regarder les annonces disponible, le profil qui a publié l'annonce,lui laissé des notes et lui envoyé un message
+	=>regarder ses annonces
+	=> modifier une annone
+	
+MESSAGERIE
+	=>creation nouveau message
+	=> voir les messages recus avec le nombre de message non lu
+	=> voir les messages envoyes
+	
+EVALUATION
+ => noté un profil avec des notes comprises entre 1 et 5
+ et lui laisser des commentaires
+ => chaque profil a une note et et affichée sur le détails de son profil
+ 
+RESSOURCE PARTAGEE
+	=> photo
+	=> annonce
+	
+CALENDRIER
+	=> date de disponiblité de l'annonce

@@ -1,0 +1,58 @@
+{% extends 'base1.html.twig' %}
+{% block body %}
+	<div class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3">
+        </div>
+        <div class="col-lg-6">
+          <h2 class="text-center"> Mon Profil</h2>
+        </div>
+        <div class="col-lg-3">
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3">
+          {% if user.photo is not null %}
+           <img src="{{ asset(user.photo) }}"  width="100px" />
+          {% endif %}
+        </div>
+        <div class="col-lg-6">
+          {% if user.prenom is not null %}
+            <div class="alert alert-warning">
+              <strong>Prénom: </strong> <b> {{user.prenom}} </b>
+            </div>
+          {% endif %}
+          {% if user.nom is not null %}
+            <div class="alert alert-warning">
+              <strong>Nom: </strong> <b> {{user.nom}} </b>
+            </div>
+          {% endif %}
+          {% if user.email is not null %}
+            <div class="alert alert-warning">
+              <strong>Email: </strong> <b> {{user.email}} </b>
+            </div>
+          {% endif %}
+          {% if user.tel is not null %}
+            <div class="alert alert-warning">
+              <strong>Numéro de téléphone: </strong> <b> {{user.tel}} </b>
+            </div>
+          {% endif %}
+          {% if user.description is not null %}
+            <div class="alert alert-warning">
+              <strong>Description: </strong> <b> {{user.description}} </b>
+            </div>
+          {% endif %}
+        </div>
+        <div class="col-lg-3">
+          {% if array.res is defined %}
+            <div class="alert alert-warning">
+              <strong>Note: </strong> <b> <span class="badge badge-secondary">{{array.res}}</span></b>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>  
+{% endblock %}
